@@ -31,7 +31,7 @@ class OrderController {
        if (!$order) {
            http_response_code(404);
            require_once PAGE_404;
-           exit; // Останавливаем дальнейшее выполнение
+           exit;
        }
 
        $customer = $this->getCustomer($id);
