@@ -4,13 +4,13 @@ require_once HEADER_VIEW
 ?>
 <?if (!empty($orders)): ?>
     <ul>
-        <?foreach ($orders as $order):?>
+        <?foreach ($orders as $order): ?>
             <li>
                 <a href="/orders/<?= $order['id'] ?>">
                     Заказ #<?= $order['id'] ?> - <?= $order['description'] ?>
                 </a>
             </li>
-        <?endforeach;?>
+        <?endforeach; ?>
     </ul>
     <? if ($totalPages > 1): ?>
         <nav class="pagination">
@@ -33,13 +33,7 @@ require_once HEADER_VIEW
         <textarea name="description" id="description" placeholder="Описание заказа"></textarea>
 
         <label for="total_price">Общая стоимость*</label>
-        <input type="number" min="0" name="total_price" id="total_price" placeholder="Общая стоимость">
-
-<!--        <label for="phone">Номер телефона</label>-->
-<!--        <input type="text" name="phone" id="phone" placeholder="+7(000)000-00-00" />-->
-<!---->
-<!--        <label for="email">Почта</label>-->
-<!--        <input type="text" name="email" id="email" placeholder="some@some.some">-->
+        <input type="number" min="0" name="total_price" id="total_price" placeholder="Общая стоимость" step="0.01">
 
         <label for="customer_id">Выберите покупателя*</label>
         <select name="customer_id" id="customer_id">
@@ -49,7 +43,7 @@ require_once HEADER_VIEW
         </select>
 
         <select name="status" id="status">
-            <option value="unpaid">Неоплачен</option>
+            <option value="unpaid">Не оплачен</option>
             <option value="paid">Оплачен</option>
         </select>
 

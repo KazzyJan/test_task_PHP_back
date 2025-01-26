@@ -42,6 +42,10 @@ class OrderController {
        $customer = $this->orderModel->getCustomer($id);
        return $customer;
    }
+   public function getCustomerById($customerId) {
+       $customer = $this->orderModel->getCustomerById($customerId);
+       return $customer;
+   }
     public function addOrder()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -50,7 +54,7 @@ class OrderController {
             $customerId = isset($_POST['customer_id']) ? $_POST['customer_id'] : null;
             $status = isset($_POST['status']) ? $_POST['status'] : '';
 
-            $customer = $this->getCustomer($customerId);
+            $customer = $this->getCustomerById($customerId);
 
             $email = $customer['email'];
             $phone = $customer['phone'];
@@ -65,9 +69,19 @@ class OrderController {
 
             if ($orderId) {
                 $newOrder = $this->orderModel->getById($orderId);
-                $response = ['success' => true, 'order' => $newOrder];
+
+                $totalOrders = $this->orderModel->getTotalOrders();
+
+                $totalPages = ceil($totalOrders / 10);
+
+                $response = [
+                    'success' => true,
+                    'order' => $newOrder,
+                    'totalOrders' => $totalOrders,
+                    'totalPages' => $totalPages
+                ];
             } else {
-                $response = ['error' => false, 'message' => 'Не удалось добавить заказ.'];
+                $response = ['success' => false, 'message' => 'Не удалось добавить заказ.'];
             }
 
             header('Content-Type: application/json');

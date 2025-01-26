@@ -10,7 +10,7 @@ require_once HEADER_VIEW
 <h2>Заказы пользователя</h2>
 
 <ul>
-    <li><h3>Оплаченые заказы</h3>
+    <li><h3>Оплаченные заказы</h3>
         <ul>
             <?foreach ($orders as $order):?>
                 <?if ($order['status'] == 'paid'):?>
@@ -19,7 +19,7 @@ require_once HEADER_VIEW
             <?endforeach?>
         </ul>
     </li>
-    <li><h3>Неоплаченые заказы</h3>
+    <li><h3>Неоплаченные заказы</h3>
         <ul>
             <?foreach ($orders as $order):?>
                 <?if ($order['status'] == 'unpaid'):?>
@@ -51,7 +51,7 @@ $unpaidAmount = 0;
     <tr>
         <th>Всего</th>
         <th>Оплачено</th>
-        <th>Неоплачено</th>
+        <th>Не оплачено</th>
     </tr>
     </thead>
     <tbody>

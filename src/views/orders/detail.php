@@ -11,7 +11,7 @@ require_once HEADER_VIEW
 </div>
 <p><strong>Статус:</strong>
     <?if ($order['status'] == 'unpaid'):?>
-        Неоплачен
+        Не оплачен
     <?elseif($order['status'] == 'paid'):?>
         Оплачен
     <?endif;?>

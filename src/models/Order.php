@@ -38,6 +38,13 @@ class Order extends Model {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    // По тем же соображениям более чистой архитектуры этот метод добавлен в модель заказов
+    public function getCustomerById($customerId){
+        $stmt = $this->db->prepare("SELECT * FROM customers WHERE id = ?");
+        $stmt->execute([$customerId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function addOrder($description, $totalPrice, $customerId, $email, $phone, $status)
     {
         $stmt = $this->db->prepare("
